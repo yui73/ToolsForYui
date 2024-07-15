@@ -1,3 +1,3 @@
 # ToolsForYui
 
-## A repository of tools for personal use。
+## A repository of tools for personal use.
