@@ -1,0 +1,104 @@
+<script>
+    function loadSvg() {
+        console.log("调用！");
+        var svg = document.getElementById("svg").outerHTML; //获取svg所有元素
+        console.log("svg:", svg);
+        var img = document.createElement("img"); //新建img
+        // img.setAttribute("crossOrigin", "anonymous");
+        img.src =
+            "data:image/svg+xml;base64," +
+            window.btoa(unescape(encodeURIComponent(svg))); //svg base64串显示图片
+        console.log("img:", img);
+        var container = document.getElementById("div");
+        // container.appendChild(img);
+        img.onload = function () {
+            var canvas = document.createElement("canvas"); //新建画布
+            var ctx = canvas.getContext("2d");
+
+            canvas.width = "320";
+            canvas.height = "320";
+            ctx.drawImage(img, 0, 0,); //把svg base64串图片绘制到画图中
+            console.log("canvas:", canvas);
+            console.log("ctx:", ctx);
+            console.log(canvas.toDataURL("image/jpeg")); //获取jpg格式的base64串
+            console.log(canvas.toDataURL("image/png")); //获取png格式的base64串
+            container.appendChild(canvas);
+
+            // img.onload = function () {
+            //   var canvas = document.createElement("canvas"); //新建画布
+            //   var ctx = canvas.getContext("2d");
+
+            //   canvas.width = "320";
+            //   canvas.height = "320";
+            //   ctx.drawImage(img, 0, 0, 320, 320); //把svg base64串图片绘制到画图中
+            //   console.log("canvas:", canvas);
+            //   console.log("ctx:", ctx);
+            //   console.log(canvas.toDataURL("image/jpeg")); //获取jpg格式的base64串
+            //   console.log(canvas.toDataURL("image/png")); //获取png格式的base64串
+
+
+            // };
+            // 下载
+            const a = document.createElement('a')
+            a.download = '你要导出图片的名字'
+            a.href = canvas.toDataURL('image/png')
+            a.click()
+        }
+    }
+
+    // const getBase64Image = (img) => {
+    //     const canvas= document.createElement('canvas')
+    //     canvas.width = img.width
+    //     canvas.height = img.height
+    //     const ctx = canvas.getContext('2d')
+    //     ctx.drawImage(img, 0, 0, img.width, img.height)
+    //     const dataURL = canvas.toDataURL('image/png') // 可选其他值 image/jpeg
+    //     return dataURL
+    //   }
+
+    //   const main = (src, cb) => {
+    //     const image = new Image()
+    //     image.src = `${src}?v=${Math.random()}` // 处理缓存
+    //     image.crossOrigin = '*' // 支持跨域图片
+    //     image.onload = function () {
+    //       const base64 = getBase64Image(image)
+    //       if (cb) {
+    //         cb(base64)
+    //       }
+    //     }
+    //   }
+
+    // const main = ('你要转换的项目图片地址', function (base64) {
+    //       const newSvg = node.replace(oldUrl, base64) // oldUrl你转换之前的项目图片地址 base64是已经转换成功的图片地址
+    //       const image = new Image()
+    //       image.setAttribute('crossOrigin', 'anonymous') // 允许跨域
+    //       image.src = `data:image/svg+xml;base64,${window.btoa(unescape(encodeURIComponent(newSvg)))}` // 给图片对象写入base64编码的svg流
+    //       const canvas = document.createElement('canvas') // 准备空画布
+    //       canvas.width = 1500 // 设置宽度
+    //       canvas.height = 800 // 设置高度
+
+    //       image.onload = function () {
+    //         const context = canvas.getContext('2d')
+    //         context.drawImage(image, 0, 0)
+    //         const a = document.createElement('a')
+    //         a.download = `你要导出图片的名字`
+    //         a.href = canvas.toDataURL(`image/png`)
+    //         a.click()
+    //       }
+    //     })
+</script>
+<div id="div">
+    <svg id="svg" aria-hidden="true" focusable="false" class="octicon octicon-mark-github" viewBox="0 0 24 24"
+        width="320" height="320" fill="currentColor" style="
+      display: inline-block;
+      user-select: none;
+      vertical-align: text-bottom;
+      overflow: visible;
+    " version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <path id="path"
+            d="M12.5.75C6.146.75 1 5.896 1 12.25c0 5.089 3.292 9.387 7.863 10.91.575.101.79-.244.79-.546 0-.273-.014-1.178-.014-2.142-2.889.532-3.636-.704-3.866-1.35-.13-.331-.69-1.352-1.18-1.625-.402-.216-.977-.748-.014-.762.906-.014 1.553.834 1.769 1.179 1.035 1.74 2.688 1.25 3.349.948.1-.747.402-1.25.733-1.538-2.559-.287-5.232-1.279-5.232-5.678 0-1.25.445-2.285 1.178-3.09-.115-.288-.517-1.467.115-3.048 0 0 .963-.302 3.163 1.179.92-.259 1.897-.388 2.875-.388.977 0 1.955.13 2.875.388 2.2-1.495 3.162-1.179 3.162-1.179.633 1.581.23 2.76.115 3.048.733.805 1.179 1.825 1.179 3.09 0 4.413-2.688 5.39-5.247 5.678.417.36.776 1.05.776 2.128 0 1.538-.014 2.774-.014 3.162 0 .302.216.662.79.547C20.709 21.637 24 17.324 24 12.25 24 5.896 18.854.75 12.5.75Z">
+        </path>
+    </svg>
+
+    <button onclick="loadSvg()">cesho</button>
+</div>
