@@ -3,3 +3,6 @@
 *.pdf
 *.log
 *.pyc
+*.spec
+build
+dist
