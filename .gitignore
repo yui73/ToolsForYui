@@ -6,3 +6,4 @@
 *.spec
 build
 dist
+release
