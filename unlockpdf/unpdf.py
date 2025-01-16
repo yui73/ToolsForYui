@@ -10,8 +10,9 @@ import easygui
 def unlock_pdf(root_dir_path):
     # 隐藏按钮
     start_button.pack_forget()
+    status_label1.pack_forget()
     # 更新状态标签
-    status_label.config(text="任务开始...")
+    status_label2.config(text="任务开始...")
     progress_bar.pack(padx=10,pady=20)
 
     # 循环读取
@@ -42,7 +43,7 @@ def unlock_pdf(root_dir_path):
             progress_gui.update_idletasks()
 
     # 任务完成后恢复按钮并更新文本
-    status_label.config(text="任务完成！")
+    status_label2.config(text="任务完成！")
     progress_gui.update_idletasks()
 
 
@@ -61,7 +62,7 @@ if __name__ == '__main__':
     progress_gui = tk.Tk()
 
     # 窗口的宽度和高度
-    window_width = 400
+    window_width = 600
     window_height = 200
 
     # 获取屏幕的宽度和高度
@@ -87,12 +88,12 @@ if __name__ == '__main__':
 
 
     # 创建状态标签，用于显示任务状态
-    status_label = tk.Label(progress_gui, text="等待任务开始...", font=("Arial", 12))
-    status_label.pack(padx=10,pady=20)
+    status_label1 = tk.Label(progress_gui, text="等待任务开始...", font=("Arial", 12))
+    status_label1.pack(padx=10,pady=20)
 
     # 创建状态标签，用于显示任务状态
-    status_label = tk.Label(progress_gui, text="已选文件夹：" + root_dir_path, font=("Arial", 12))
-    status_label.pack(padx=2,pady=20)
+    status_label2 = tk.Label(progress_gui, text="已选文件夹：" + root_dir_path, font=("Arial", 12))
+    status_label2.pack(padx=2,pady=20)
 
     # 创建按钮，点击后开始更新进度条
     start_button = tk.Button(progress_gui, text="开始任务", command=start_task, width=30, height=2)
