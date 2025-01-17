@@ -45,6 +45,23 @@
 
 ```sh
 ├── documents
+│   ├── reports
+│   │   ├── financial-summary-2023.pdf
+│   │   ├── market-analysis-q4.pdf
+│   │   └── yearly-report-archive
+│   │       ├── report-2020.pdf
+│   │       ├── report-2021.pdf
+│   │       └── report-2022.pdf
+│   ├── guides
+│   │   ├── user-guide.pdf
+│   │   ├── setup-instructions.pdf
+│   │   └── advanced-tips.pdf
+│   └── templates
+│       ├── invoice-template.pdf
+│       ├── proposal-template.pdf
+│       ├── contract-template.pdf
+│       └── checklist-template.pdf
+├── unlock
 │   ├── yearly-report-archive
 │   │   ├── report-2020.pdf
 │   │   ├── report-2021.pdf
@@ -62,4 +79,4 @@
 │       ├── contract-template.pdf
 │       └── checklist-template.pdf
 ```
-**其中，`out`文件夹为输出结果。**
+**其中，`unlock`文件夹为输出结果。**
